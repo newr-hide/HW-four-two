@@ -1,0 +1,19 @@
+.inputD {
+    width: 200px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 5px;
+    
+}
+
+.titleD {
+    text-align: center;
+    font-size: large;
+    color: black;
+}
+
+.groupDist {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}

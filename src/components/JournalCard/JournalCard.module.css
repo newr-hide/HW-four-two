@@ -1,0 +1,22 @@
+.Card {
+    display: flex;
+}
+
+.title {
+    margin: 20px;
+    margin-left: 100px;
+    padding-left: 20px;
+}
+
+.btnCard {
+    border: none;
+    background-color: white;
+    width: 40px;
+    height: 30px;
+    margin: 10px;
+    font-size: large;
+}
+
+.btnsCard {
+    margin-left: 50px;
+}
