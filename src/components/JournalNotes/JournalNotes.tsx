@@ -1,15 +1,19 @@
-import * as React from 'react';
+
 import classNames from 'classnames';
 import S from './JournalNotes.module.css';
 import { JournalCard } from '../JournalCard/JournalCard';
-import { useState } from 'react';
 
 export type JournalNotesProps = {
     entries?: { id: number; dateTrain: string; distance: number }[];
     className?: string;
+    onDelete: (id: number) => void;
 };
 
-export function JournalNotes({entries, ...props }: JournalNotesProps) {
+export function JournalNotes({entries,onDelete, ...props }: JournalNotesProps) {
+    const sortedEntries = entries?.slice().sort((a, b) =>
+        new Date(a.dateTrain).getTime() - new Date(b.dateTrain).getTime()
+    ) ?? [];
+   
 
     return (
         <>
@@ -17,9 +21,12 @@ export function JournalNotes({entries, ...props }: JournalNotesProps) {
                 <span className={classNames(props.className, S.title)}>Дата (ДД.ММ.ГГ)</span>
                 <span className={classNames(props.className, S.title)}>Пройдено км.</span>
                 <span className={classNames(props.className, S.title)}>Действия</span>
-                {entries?.map((entry) => (
-        <JournalCard key={entry.id} data={entry} />
-      ))}
+                {sortedEntries.map((entry) => (
+        <li key={entry.id}>
+            <JournalCard data={entry} onDelete={onDelete} />
+        </li>
+    ))}
+                
             </ol>
         </>
     );
